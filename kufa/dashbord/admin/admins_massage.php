@@ -35,12 +35,13 @@ require_once('../../db-connect.php');
                             <tbody>
 
                                 <?php
-
+                              
                                 $contacts_query = "SELECT * FROM contacts ";
                                 $contacts_query_db = mysqli_query($db_connect, $contacts_query);
                                 $contacts= mysqli_fetch_assoc($contacts_query_db);
+            
                                 $serial = 1;
-                                foreach ($contacts_query_db as $service) : ?>
+                                foreach ($contacts_query_db as $contacts) : ?>
                                     <tr>
                                         <th><?= $serial++ ?></th>
                                         <td><?= $contacts['name'] ?></td>

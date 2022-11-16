@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <?php
-$tab_title='home.php';
+$tab_title = 'home.php';
 require_once('../db-connect.php');
 session_start();
 ?>
@@ -100,29 +100,29 @@ session_start();
 
             ?>
 
-                <div class="side-info mb-30">
-                    <div class="contact-list mb-30">
-                        <h4>Office Address</h4>
-                        <p><?= $adress['adress'] ?></p>
-                    </div>
-                    <div class="contact-list mb-30">
-                        <h4>Phone Number</h4>
-                        <p><?= $adress['phone_number'] ?></p>
-                    </div>
-                    <div class="contact-list mb-30">
-                        <h4>Email Address</h4>
-                        <p><?= $adress['email'] ?></p>
-                    </div>
+            <div class="side-info mb-30">
+                <div class="contact-list mb-30">
+                    <h4>Office Address</h4>
+                    <p><?= $adress['adress'] ?></p>
                 </div>
-
-                <div class="social-icon-right mt-20">
-
-                    <a href="<?= $adress['facebook'] ?>"><i class="fab fa-facebook-f"></i></a>
-                    <a href="<?= $adress['facebook'] ?>"><i class="fab fa-twitter"></i></a>
-                    <a href="<?= $adress['facebook'] ?>"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="<?= $adress['facebook'] ?>"><i class="fab fa-instagram"></i></a>
+                <div class="contact-list mb-30">
+                    <h4>Phone Number</h4>
+                    <p><?= $adress['phone_number'] ?></p>
                 </div>
-            
+                <div class="contact-list mb-30">
+                    <h4>Email Address</h4>
+                    <p><?= $adress['email'] ?></p>
+                </div>
+            </div>
+
+            <div class="social-icon-right mt-20">
+
+                <a href="<?= $adress['facebook'] ?>"><i class="fab fa-facebook-f"></i></a>
+                <a href="<?= $adress['facebook'] ?>"><i class="fab fa-twitter"></i></a>
+                <a href="<?= $adress['facebook'] ?>"><i class="fab fa-google-plus-g"></i></a>
+                <a href="<?= $adress['facebook'] ?>"><i class="fab fa-instagram"></i></a>
+            </div>
+
         </div>
         <div class="offcanvas-overly"></div>
         <!-- offcanvas-end -->
@@ -148,8 +148,8 @@ session_start();
                             unset($_SESSION['concact_status']);
                             ?>
                             <h6 class="wow fadeInUp" data-wow-delay="0.2s">HELLO!</h6>
-                            <h2 class="wow fadeInUp" data-wow-delay="0.4s">I am Will <?=$adress['name'] ?></h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.6s">I'm  <?= $adress['name'] ?>, professional web developer with long time experience in this field​.</p>
+                            <h2 class="wow fadeInUp" data-wow-delay="0.4s">I am Will <?= $adress['name'] ?></h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.6s">I'm <?= $adress['name'] ?>, professional web developer with long time experience in this field​.</p>
                             <div class="banner-social wow fadeInUp" data-wow-delay="0.8s">
 
                                 <?php
@@ -205,25 +205,25 @@ session_start();
                             <h3>Education:</h3>
                         </div>
                         <?php
-                         //$id = $_GET['id'];
+                        //$id = $_GET['id'];
                         $about_query = "SELECT * FROM abouts WHERE  about_status='active' LIMIT 5 ";
                         $about_query_db = mysqli_query($db_connect, $about_query);
                         $about = mysqli_fetch_assoc($about_query_db);
-                        
+
                         foreach ($about_query_db as $about) : ?>
-                        <div class="education">
-                            <div class="year"><?= $about['archive_year'] ?></div>
-                            <div class="line"></div>
-                            <div class="location">
-                                <span><?= $about['educational_title'] ?></span>
-                                <div class="progressWrapper">
-                                    <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: <?= $about['education_prg'] ?>%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                  
+                            <div class="education">
+                                <div class="year"><?= $about['archive_year'] ?></div>
+                                <div class="line"></div>
+                                <div class="location">
+                                    <span><?= $about['educational_title'] ?></span>
+                                    <div class="progressWrapper">
+                                        <div class="progress">
+                                            <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: <?= $about['education_prg'] ?>%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         <?php
                         endforeach;
                         ?>
@@ -373,11 +373,11 @@ session_start();
                     <div class="col-xl-9 col-lg-10">
                         <div class="testimonial-active">
                             <?php
-                            
+
                             $testimonial_qurey = "SELECT * FROM testimonials WHERE status='active' LIMIT 6 ";
                             $testimonial_qurey_db = mysqli_query($db_connect, $testimonial_qurey);
                             $testimonial = mysqli_fetch_assoc($testimonial_qurey_db);
-                            
+
 
                             foreach ($testimonial_qurey_db as $testimonial) : ?>
 
@@ -410,38 +410,24 @@ session_start();
         <div class="barnd-area pt-100 pb-100">
             <div class="container">
                 <div class="row brand-active">
+                    <?php
+
+                    $brand_query = "SELECT * FROM brands WHERE brand_status='active' LIMIT 8 ";
+                    $brand_query_db = mysqli_query($db_connect, $brand_query);
+                    foreach ($brand_query_db as $brand) : ?>
+
                     <div class="col-xl-2">
                         <div class="single-brand">
-                            <img src="img/brand/brand_img01.png" alt="img">
+                            <img src="../dashbord/uploads/brands/<?= $brand['brand_img'] ?>" alt="" width="150px" height="100px" >
                         </div>
                     </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="img/brand/brand_img02.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="img/brand/brand_img03.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="img/brand/brand_img04.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="img/brand/brand_img05.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="img/brand/brand_img03.png" alt="img">
-                        </div>
-                    </div>
+                    <?php
+                    endforeach;
+                    ?>
+
                 </div>
             </div>
+        </div>
         </div>
         <!-- brand-area-end -->
 

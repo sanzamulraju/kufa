@@ -86,6 +86,17 @@ $page_name = end($explode);
                     <li class="<?= ($page_name == 'index.php') ? 'active-page' : '' ?>">
                         <a href="./index.php"><i class="material-icons-two-tone">dashboard</i>Dashboard</a>
                     </li>
+                    <li class="<?= ($page_name == 'brand_add.php') ? 'active-page' : '' ?>">
+                        <a href="./brand.php"><i class="fa fa-building-o"></i>Brand</a>
+                        <ul class="sub-menu">
+                        <li>
+                                <a class="<?= ($page_name == 'service_add.php') ? 'active' : '' ?>" href="./brand_add.php">Add Brand</a>
+                            </li>
+                            <li>
+                                <a class="<?= ($page_name == 'brand_list.php') ? 'active' : '' ?>" href="./brand_list.php">Brand Image List</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="<?= ($page_name == 'socail_links.php') ? 'active-page' : '' ?>">
                         <a href="./socail_links.php"><i class="material-icons-two-tone">link</i>Social Link</a>
                     </li>
